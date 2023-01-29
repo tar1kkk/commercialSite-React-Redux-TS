@@ -11,6 +11,8 @@ import featureImg02 from '../assets/images/service-02.png';
 import featureImg03 from '../assets/images/service-03.png';
 import products from "../assets/fake-data/products.js";
 
+
+import TestimonialSlider from '../components/UI/slider/TestimonialSlider';
 import networkImg from '../assets/images/network.png';
 import whyImg from '../assets/images/location.png';
 import foodCategoryImg01 from '../assets/images/hamburger.png';
@@ -258,6 +260,7 @@ function Home() {
 								<h5 className='testimonial__subtitle mb-4'>Testimonail</h5>
 								<h2 className='testimonial__title mb-4'>What our <span>customers</span> are saying</h2>
 								<p className='testimonial__desc'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex iure delectus tempore dolorum iusto. Consectetur praesentium magni officiis ipsum ut?</p>
+								<TestimonialSlider />
 							</div>
 						</Col>
 						<Col lg='6' md='6'>
