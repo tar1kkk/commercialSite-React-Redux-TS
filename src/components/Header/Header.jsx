@@ -4,6 +4,8 @@ import logo from '../../assets/images/res-logo.png';
 import { NavLink, Link } from 'react-router-dom';
 import '../../styles/header.css';
 import { useRef } from 'react';
+import { useEffect } from 'react';
+import { useSelector } from 'react-redux';
 
 
 const nav__links = [
@@ -26,12 +28,26 @@ const nav__links = [
 ];
 
 function Header() {
+	const headerRef = useRef(null);
 	const menuRef = useRef(null);
+	const totalQuantity = useSelector(state => state.cartSlice.totalQuantity);
 	const toggleMenu = () => {
 		menuRef.current.classList.toggle('show__menu');
 	}
+
+	useEffect(() => {
+		window.addEventListener('scroll', () => {
+			if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
+				headerRef.current.classList.add('header__shrink');
+			} else {
+				headerRef.current.classList.remove('header__shrink');
+			}
+		})
+
+		return () => window.removeEventListener('scroll');
+	}, [])
 	return (
-		<header className="header" >
+		<header className="header" ref={headerRef}>
 			<Container>
 				<div className="nav__wrapper d-flex align-items-center justify-content-between">
 					<div className="logo">
@@ -60,7 +76,7 @@ function Header() {
 					<div className="nav__right d-flex align-items-center gap-4">
 						<span className="cart__icon">
 							<i class="ri-shopping-basket-line"></i>
-							<span className="cart__badge">2</span>
+							<span className="cart__badge">{totalQuantity}</span>
 						</span>
 
 						<span className="user">

@@ -192,14 +192,14 @@ function Home() {
 							</div>
 						</Col>
 						{allProducts.map(item => (
-							<Col lg='3' md='4' key={item.id} className='mt-5'>
+							<Col lg='3' md='4' sm='6' xs='6' key={item.id} className='mt-5'>
 								<ProductCart item={item} />
 							</Col>
 						))}
 					</Row>
 				</Container>``
 			</section>
-			<section>
+			<section className='why__choose-us'>
 				<Container>
 					<Row>
 						<Col lg='6' md='6'>
