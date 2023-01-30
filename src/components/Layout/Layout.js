@@ -4,14 +4,17 @@ import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import Routes from '../../routes/Routers';
 import Carts from '../UI/cart/Carts';
+import { useSelector } from 'react-redux';
 
 
 function Layout(props) {
+
+	const showCart = useSelector(state => state.cartUISlice.cartIsVisible);
 	return (
 		<div>
 			<Header />
 
-			<Carts />
+			{showCart && <Carts />}
 			<div>
 				<Routes />
 			</div>

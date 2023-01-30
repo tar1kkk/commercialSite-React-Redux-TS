@@ -6,6 +6,9 @@ import '../../styles/header.css';
 import { useRef } from 'react';
 import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { toggle } from '../../store/shopping-cart/cartUISlice';
+
 
 
 const nav__links = [
@@ -31,8 +34,12 @@ function Header() {
 	const headerRef = useRef(null);
 	const menuRef = useRef(null);
 	const totalQuantity = useSelector(state => state.cartSlice.totalQuantity);
+	const dispatch = useDispatch();
 	const toggleMenu = () => {
 		menuRef.current.classList.toggle('show__menu');
+	}
+	const toggleCart = () => {
+		dispatch(toggle());
 	}
 
 	useEffect(() => {
@@ -74,7 +81,7 @@ function Header() {
 
 					{/* ======== nav right icons ========= */}
 					<div className="nav__right d-flex align-items-center gap-4">
-						<span className="cart__icon">
+						<span className="cart__icon" onClick={toggleCart}>
 							<i class="ri-shopping-basket-line"></i>
 							<span className="cart__badge">{totalQuantity}</span>
 						</span>

@@ -35,7 +35,6 @@
  }
  .cart__item-list {
 	height: calc(100vh - 140px);
-	overflow-y: scroll;
  }
  
  .cart__bottom {
