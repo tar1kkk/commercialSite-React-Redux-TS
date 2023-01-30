@@ -2,7 +2,7 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { ListGroupItem } from 'reactstrap';
 import '../../../styles/cart-item.css';
-import { addItem, removeItem } from '../../../store/shopping-cart/cartSlice';
+import { addItem, deleteItem, removeItem } from '../../../store/shopping-cart/cartSlice';
 
 function CartItem({ item }) {
 	const dispatch = useDispatch();
@@ -28,6 +28,11 @@ function CartItem({ item }) {
 			totalPrice
 		}))
 	}
+	const deleteItemCart = () => {
+		dispatch(deleteItem({
+			id
+		}))
+	}
 	return (
 		<ListGroupItem className="border-0 cart__item">
 			<div className="cart__item-info d-flex gap-2">
@@ -50,7 +55,7 @@ function CartItem({ item }) {
 						</div>
 					</div>
 
-					<span className="delete__btn" >
+					<span className="delete__btn" onClick={deleteItemCart} >
 						<i class="ri-close-line"></i>
 					</span>
 				</div>
