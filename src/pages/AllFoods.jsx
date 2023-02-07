@@ -25,10 +25,6 @@ function AllFoods() {
 			return item;
 		}
 	});
-	const filteredBy = (znach) => {
-		const filtered = products.sort(a, b => a.price > b.price);
-	}
-
 	const productPerPage = 12;
 	const visitedPage = pageNumber * productPerPage;
 	const displayPage = searchedProduct.slice(visitedPage, visitedPage + productPerPage);
