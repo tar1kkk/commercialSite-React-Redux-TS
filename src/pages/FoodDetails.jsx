@@ -14,6 +14,9 @@ import { useEffect } from 'react';
 function FoodDetails() {
 	const dispatch = useDispatch();
 	const [tab, setTab] = useState('desc');
+	const [enteredName, setEnteredName] = useState('');
+	const [enteredEmail, setEnteredEmail] = useState('');
+	const [reviewMsg, setReviewMsg] = useState('');
 
 	const { id } = useParams();
 	const product = products.find(item => item.id === id);
@@ -29,6 +32,9 @@ function FoodDetails() {
 			price
 		}));
 	};
+	const submitHandler = e => {
+		e.preventDefault();
+	}
 
 	useEffect(() => {
 		window.scrollTo(0, 0);
@@ -98,18 +104,21 @@ function FoodDetails() {
 											<p className='user__email'>tarasleuta@gmail.com</p>
 											<p className='feedback__text'>great product</p>
 										</div>
-										<form className='form'>
+										<form className='form' onSubmit={submitHandler}>
 
 											<div className='form__group'>
-												<input type="text" placeholder='Enter your name' />
+												<input type="text" placeholder='Enter your name'
+													onChange={(e) => setEnteredName(e.target.value)} required />
 											</div>
 
 											<div className='form__group'>
-												<input type="text" placeholder='Enter your name' />
+												<input type="text" placeholder='Enter your email'
+													onChange={(e) => setEnteredEmail(e.target.value)} required />
 											</div>
 
 											<div className='form__group'>
-												<textarea type="text" placeholder='Enter your name' />
+												<textarea type="text" placeholder='Write your review'
+													onChange={e => setReviewMsg(e.target.value)} required />
 											</div>
 											<button type='submit' className='addTOCart__btn'>Submit</button>
 										</form>

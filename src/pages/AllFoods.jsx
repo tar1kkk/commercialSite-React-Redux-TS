@@ -11,7 +11,7 @@ import '../styles/all-foods.css';
 import ReactPaginate from 'react-paginate';
 import '../styles/pagination.css';
 
-function AllFoods(props) {
+function AllFoods() {
 
 	const [searchTerm, setSearchTerm] = useState('');
 	const [pageNumber, setPageNumber] = useState(0);
@@ -24,7 +24,10 @@ function AllFoods(props) {
 		if (item.title.toLowerCase().includes(searchTerm.toLowerCase())) {
 			return item;
 		}
-	})
+	});
+	const filteredBy = (znach) => {
+		const filtered = products.sort(a, b => a.price > b.price);
+	}
 
 	const productPerPage = 12;
 	const visitedPage = pageNumber * productPerPage;
@@ -42,8 +45,8 @@ function AllFoods(props) {
 			<section>
 				<Container>
 					<Row>
-						<Col lg='6' md='6' sm='6'>
-							<div className="search__widget d-flex align-items-center justify-content-between w-50">
+						<Col lg='6' md='6' sm='6' xs='12'>
+							<div className="search__widget d-flex align-items-center justify-content-between">
 								<input
 									value={searchTerm}
 									onChange={(e) => setSearchTerm(e.target.value)}
@@ -51,8 +54,8 @@ function AllFoods(props) {
 								<span><i class='ri-search-line'></i></span>
 							</div>
 						</Col>
-						<Col lg='6' md='6' sm='6' className='mb-5'>
-							<div className="sorting__widger text-end">
+						<Col lg='6' md='6' sm='6' xs='12' className='mb-5'>
+							<div className="sorting__widget text-end">
 								<select>
 									<option>Default</option>
 									<option value='ascending'>Alphabetically, A-Z</option>
